@@ -69,7 +69,7 @@ class Spider:
             'result_dir_name', 0)  # 结果目录名，取值为0或1，决定结果文件存储在用户昵称文件夹里还是用户id文件夹里
         self.cookie = config['cookie']
         self.mysql_config = config.get('mysql_config')  # MySQL数据库连接配置，可以不填
-
+        self.postgresql_config = config.get('postgresql_config')
         self.sqlite_config = config.get('sqlite_config')
         self.kafka_config = config.get('kafka_config')
         self.user_config_file_path = ''
@@ -271,6 +271,11 @@ class Spider:
             from .writer import KafkaWriter
 
             self.writers.append(KafkaWriter(self.kafka_config))
+
+        if 'postgresql' in self.write_mode:
+            from .writer import PostgreSqlWriter
+
+            self.writers.append(PostgreSqlWriter(self.postgresql_config))
 
         self.downloaders = []
         if self.pic_download == 1:

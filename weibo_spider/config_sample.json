@@ -12,6 +12,13 @@
 	"file_download_timeout": [5, 5, 10],
 	"result_dir_name": 0,
     "cookie": "your cookie",
+    "postgresql_config": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "weibo",
+        "user": "postgres",
+        "password": "123456"
+    },
     "mysql_config": {
         "host": "localhost",
         "port": 3306,
