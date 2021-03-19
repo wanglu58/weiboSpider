@@ -4,7 +4,7 @@
 
 # Weibo Spider
 
-本程序可以连续爬取**一个**或**多个**新浪微博用户（如[胡歌](https://weibo.cn/u/1223178222)、[迪丽热巴](https://weibo.cn/u/1669879400)、[郭碧婷](https://weibo.cn/u/1729370543)）的数据，并将结果信息写入**文件**或**数据库**。写入信息几乎包括用户微博的所有数据，包括**用户信息**和**微博信息**两大类。因为内容太多，这里不再赘述，详细内容见[获取到的字段](#获取到的字段)。如果只需要用户信息，可以通过设置实现只爬取微博用户信息的功能。本程序需设置cookie来获取微博访问权限，后面会讲解[如何获取cookie](#如何获取cookie)。如果不想设置cookie，可以使用[免cookie版](https://github.com/dataabc/weibo-crawler)，二者功能类似。
+本程序可以连续爬取**一个**或**多个**新浪微博用户（如[胡歌](https://weibo.cn/u/1223178222)、[迪丽热巴](https://weibo.cn/u/1669879400)、[郭碧婷](https://weibo.cn/u/1729370543)）的数据，并将结果信息写入**文件**或**数据库**。写入信息几乎包括用户微博的所有数据，包括**用户信息**和**微博信息**两大类。因为内容太多，这里不再赘述，详细内容见[获取到的字段](#获取到的字段)。如果只需要用户信息，可以通过设置实现只爬取微博用户信息的功能。本程序需设置cookie来获取微博访问权限，后面会讲解[如何获取cookie](#如何获取cookie)。如果不想设置cookie，可以使用[免cookie版](https://github.com/wanglu58/weibo-crawler)，二者功能类似。
 
 爬取结果可写入文件和数据库，具体的写入文件类型如下：
 
@@ -17,11 +17,11 @@
 
 同时支持下载微博中的图片和视频，具体的可下载文件如下：
 - **原创**微博中的原始**图片**（可选）
-- **转发**微博中的原始**图片**（[免cookie版](https://github.com/dataabc/weibo-crawler)特有）
+- **转发**微博中的原始**图片**（[免cookie版](https://github.com/wanglu58/weibo-crawler)特有）
 - **原创**微博中的**视频**（可选）
-- **转发**微博中的**视频**（[免cookie版](https://github.com/dataabc/weibo-crawler)特有）
-- **原创**微博**Live Photo**中的**视频**（[免cookie版](https://github.com/dataabc/weibo-crawler)特有）
-- **转发**微博**Live Photo**中的**视频**（[免cookie版](https://github.com/dataabc/weibo-crawler)特有）
+- **转发**微博中的**视频**（[免cookie版](https://github.com/wanglu58/weibo-crawler)特有）
+- **原创**微博**Live Photo**中的**视频**（[免cookie版](https://github.com/wanglu58/weibo-crawler)特有）
+- **转发**微博**Live Photo**中的**视频**（[免cookie版](https://github.com/wanglu58/weibo-crawler)特有）
 
 ## 内容列表
 
@@ -50,7 +50,7 @@
 
 ## 获取到的字段
 
-本部分为爬取到的字段信息说明，为了与[免cookie版](https://github.com/dataabc/weibo-crawler)区分，下面将两者爬取到的信息都列出来。如果是免cookie版所特有的信息，会有免cookie标注，没有标注的为二者共有的信息。
+本部分为爬取到的字段信息说明，为了与[免cookie版](https://github.com/wanglu58/weibo-crawler)区分，下面将两者爬取到的信息都列出来。如果是免cookie版所特有的信息，会有免cookie标注，没有标注的为二者共有的信息。
 
 **用户信息**
 
@@ -94,14 +94,14 @@
 - 结果文件：保存在当前目录weibo文件夹下以用户昵称为名的文件夹里，名字为"user_id.csv"和"user_id.txt"的形式
 - 微博图片：原创微博中的图片和转发微博转发理由中的图片，保存在以用户昵称为名的文件夹下的img文件夹里
 - 微博视频：原创微博中的视频，保存在以用户昵称为名的文件夹下的video文件夹里
-- 微博bid（免cookie版）：为[免cookie版](https://github.com/dataabc/weibo-crawler)所特有，与本程序中的微博id是同一个值
+- 微博bid（免cookie版）：为[免cookie版](https://github.com/wanglu58/weibo-crawler)所特有，与本程序中的微博id是同一个值
 - 话题（免cookie版）：微博话题，即两个#中的内容，若存在多个话题，每个url以英文逗号分隔，若没有则值为''
 - @用户（免cookie版）：微博@的用户，若存在多个@用户，每个url以英文逗号分隔，若没有则值为''
 - 原始微博（免cookie版）：为转发微博所特有，是转发微博中那条被转发的微博，存储为字典形式，包含了上述微博信息中的所有内容，如微博id、微博内容等等
 
 ## 示例
 
-如果想要知道程序的具体运行结果，可以查看[示例文档](https://github.com/dataabc/weiboSpider/blob/master/docs/example.md)，该文档介绍了爬取[迪丽热巴微博](https://weibo.cn/u/1669879400)的例子，并附有部分结果文件截图。
+如果想要知道程序的具体运行结果，可以查看[示例文档](https://github.com/wanglu58/weiboSpider/blob/master/docs/example.md)，该文档介绍了爬取[迪丽热巴微博](https://weibo.cn/u/1669879400)的例子，并附有部分结果文件截图。
 
 ## 运行环境
 
@@ -112,7 +112,7 @@
 
 ### 0.版本
 
-本程序有两个版本，你现在看到的是python3版，另一个是python2版，python2版位于[python2分支](https://github.com/dataabc/weiboSpider/tree/python2)。目前主力开发python3版，包括新功能开发和bug修复；python2版仅支持bug修复。推荐python3用户使用当前版本，推荐python2用户使用[python2版](https://github.com/dataabc/weiboSpider/tree/python2)，本使用说明是python3版的使用说明。
+本程序有两个版本，你现在看到的是python3版，另一个是python2版，python2版位于[python2分支](https://github.com/wanglu58/weiboSpider/tree/python2)。目前主力开发python3版，包括新功能开发和bug修复；python2版仅支持bug修复。推荐python3用户使用当前版本，推荐python2用户使用[python2版](https://github.com/wanglu58/weiboSpider/tree/python2)，本使用说明是python3版的使用说明。
 
 ### 1.安装程序
 
@@ -121,7 +121,7 @@
 #### 源码安装
 
 ```bash
-$ git clone https://github.com/dataabc/weiboSpider.git
+$ git clone https://github.com/wanglu58/weiboSpider.git
 $ cd weiboSpider
 $ pip install -r requirements.txt
 ```
@@ -134,7 +134,7 @@ $ python3 -m pip install weibo-spider
 
 ### 2.程序设置
 
-要了解程序设置，请查看[程序设置文档](https://github.com/dataabc/weiboSpider/blob/master/docs/settings.md)。
+要了解程序设置，请查看[程序设置文档](https://github.com/wanglu58/weiboSpider/blob/master/docs/settings.md)。
 
 ### 3.运行程序
 
@@ -218,22 +218,22 @@ $ python3 -m weibo_spider --u="1669879400,1223178222"
 
 ## 定期自动爬取微博（可选）
 
-要想让程序每个一段时间自动爬取，且爬取的内容为新增加的内容（不包括已经获取的微博），请查看[定期自动爬取微博](https://github.com/dataabc/weiboSpider/blob/master/docs/automation.md)。
+要想让程序每个一段时间自动爬取，且爬取的内容为新增加的内容（不包括已经获取的微博），请查看[定期自动爬取微博](https://github.com/wanglu58/weiboSpider/blob/master/docs/automation.md)。
 
 ## 如何获取cookie
 
-要了解获取cookie方法，请查看[cookie文档](https://github.com/dataabc/weiboSpider/blob/master/docs/cookie.md)。
+要了解获取cookie方法，请查看[cookie文档](https://github.com/wanglu58/weiboSpider/blob/master/docs/cookie.md)。
 
 ## 如何获取user_id
 
-要了解获取user_id方法，请查看[user_id文档](https://github.com/dataabc/weiboSpider/blob/master/docs/userid.md)，该文档介绍了如何获取一个及多个微博用户user_id的方法。
+要了解获取user_id方法，请查看[user_id文档](https://github.com/wanglu58/weiboSpider/blob/master/docs/userid.md)，该文档介绍了如何获取一个及多个微博用户user_id的方法。
 
 ## 常见问题
 
-如果运行程序的过程中出现错误，可以查看[常见问题](https://github.com/dataabc/weiboSpider/blob/master/docs/FAQ.md)页面，里面包含了最常见的问题及解决方法。如果出现的错误不在常见问题里，您可以通过[发issue](https://github.com/dataabc/weiboSpider/issues/new/choose)寻求帮助，我们会很乐意为您解答。
+如果运行程序的过程中出现错误，可以查看[常见问题](https://github.com/wanglu58/weiboSpider/blob/master/docs/FAQ.md)页面，里面包含了最常见的问题及解决方法。如果出现的错误不在常见问题里，您可以通过[发issue](https://github.com/wanglu58/weiboSpider/issues/new/choose)寻求帮助，我们会很乐意为您解答。
 ## 学术研究
 
-本项目通过获取微博数据，为写论文、做研究等非商业项目提供所需数据。[学术研究文档](https://github.com/dataabc/weiboSpider/blob/master/docs/academic.md)是一些在论文或研究等方面使用过本程序的项目，这些项目展示已征得所有者同意。在一些涉及隐私的描述上，已与所有者做了沟通，描述中只介绍所有者允许展示的部分。如果部分信息所有者之前同意展示并且已经写在了文档中，现在又不想展示了，可以通过邮件(chillychen1991@gmail.com)或issue的方式告诉我，我会删除相关信息。同时，也欢迎使用本项目写论文或做其它学术研究的朋友，将自己的研究成果展示在[学术研究文档](https://github.com/dataabc/weiboSpider/blob/master/docs/academic.md)里，这完全是自愿的。
+本项目通过获取微博数据，为写论文、做研究等非商业项目提供所需数据。[学术研究文档](https://github.com/wanglu58/weiboSpider/blob/master/docs/academic.md)是一些在论文或研究等方面使用过本程序的项目，这些项目展示已征得所有者同意。在一些涉及隐私的描述上，已与所有者做了沟通，描述中只介绍所有者允许展示的部分。如果部分信息所有者之前同意展示并且已经写在了文档中，现在又不想展示了，可以通过邮件(chillychen1991@gmail.com)或issue的方式告诉我，我会删除相关信息。同时，也欢迎使用本项目写论文或做其它学术研究的朋友，将自己的研究成果展示在[学术研究文档](https://github.com/wanglu58/weiboSpider/blob/master/docs/academic.md)里，这完全是自愿的。
 ## 相关项目
 
 - [weibo-crawler](https://github.com/dataabc/weibo-crawler) - 功能和本项目完全一样，可以不添加cookie，获取的微博属性更多；
@@ -241,11 +241,11 @@ $ python3 -m weibo_spider --u="1669879400,1223178222"
 
 ## 贡献
 
-欢迎为本项目贡献力量。贡献可以是提交代码，可以是通过issue提建议（如新功能、改进方案等），也可以是通过issue告知我们项目存在哪些bug、缺点等，具体贡献方式见[为本项目做贡献](https://github.com/dataabc/weiboSpider/blob/master/CONTRIBUTING.md)。
+欢迎为本项目贡献力量。贡献可以是提交代码，可以是通过issue提建议（如新功能、改进方案等），也可以是通过issue告知我们项目存在哪些bug、缺点等，具体贡献方式见[为本项目做贡献](https://github.com/wanglu58/weiboSpider/blob/master/CONTRIBUTING.md)。
 
 ## 贡献者
 
-感谢所有为本项目贡献力量的朋友，贡献者详情见[贡献者](https://github.com/dataabc/weiboSpider/blob/master/docs/contributors.md)页面。
+感谢所有为本项目贡献力量的朋友，贡献者详情见[贡献者](https://github.com/wanglu58/weiboSpider/blob/master/docs/contributors.md)页面。
 
 ## 注意事项
 

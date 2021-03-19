@@ -11,7 +11,7 @@ setuptools.setup(
     description='新浪微博爬虫，用python爬取新浪微博数据。',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/dataabc/weiboSpider',
+    url='https://github.com/wanglu58/weiboSpider',
     packages=setuptools.find_packages(),
     package_data={'weibo_spider': ['config_sample.json', 'logging.conf']},
     classifiers=[
