@@ -15,7 +15,8 @@ class PostgreSqlWriter(Writer):
             connection = psycopg2.connect(**self.postgresql_config)
             connection.close()
         except Exception:
-            logger.warning(u'系统中可能没有安装或正确配置PostgreSql数据库，请先根据系统环境安装或配置PostgreSql，再运行程序')
+            logger.warning(u'系统中可能没有安装或正确配置PostgreSql数据库，'
+                           u'请先根据系统环境安装或配置PostgreSql，再运行程序')
             sys.exit()
 
     def _postgresql_create(self, connection, sql):
@@ -46,12 +47,17 @@ class PostgreSqlWriter(Writer):
             connection = psycopg2.connect(**self.postgresql_config)
             cursor = connection.cursor()
             for i in data_list:
-                update = ','.join([
-                    " {key} = '{value}'".format(key=key, value=value)
-                    for key, value in i.items()
-                ])
+                update_data = []
+                values_data = []
+                for key, value in i.items():
+                    if isinstance(value, str):
+                        value = value.replace("'", '"')
+                    values_data.append(value)
+                    update_data.append(" {key} = '{value}'".format(
+                        key=key, value=value))
+                update = ','.join(update_data)
                 keys = ', '.join(i.keys())
-                values = tuple(i.values())
+                values = tuple(values_data)
                 sql_i = """INSERT INTO "{}" ({}) VALUES {}""".format(
                     table, keys, values
                 )
@@ -77,23 +83,24 @@ class PostgreSqlWriter(Writer):
         """将爬取的微博信息写入PostgreSql数据库"""
         # 创建'weibo'表
         try:
-            create_table = """CREATE TABLE IF NOT EXISTS "weibo" (
-                            id varchar(10) NOT NULL,
-                            user_id varchar(12),
-                            content varchar(2000),
-                            article_url varchar(200),
-                            original_pictures varchar(3000),
-                            retweet_pictures varchar(3000),
-                            original BOOLEAN NOT NULL DEFAULT TRUE,
-                            video_url varchar(300),
-                            publish_place varchar(100),
-                            publish_time timestamptz NOT NULL,
-                            publish_tool varchar(30),
-                            up_num INT NOT NULL,
-                            retweet_num INT NOT NULL,
-                            comment_num INT NOT NULL,
-                            PRIMARY KEY (id)
-                            )"""
+            create_table = """
+                    CREATE TABLE IF NOT EXISTS "weibo" (
+                    id varchar(10) NOT NULL,
+                    user_id varchar(12),
+                    content varchar(2000),
+                    article_url varchar(200),
+                    original_pictures varchar(3000),
+                    retweet_pictures varchar(3000),
+                    original BOOLEAN NOT NULL DEFAULT TRUE,
+                    video_url varchar(300),
+                    publish_place varchar(100),
+                    publish_time timestamptz NOT NULL,
+                    publish_tool varchar(30),
+                    up_num INT NOT NULL,
+                    retweet_num INT NOT NULL,
+                    comment_num INT NOT NULL,
+                    PRIMARY KEY (id)
+                    )"""
             self._postgresql_create_table(create_table)
             # 在'weibo'表中插入或更新微博数据
             weibo_list = []
