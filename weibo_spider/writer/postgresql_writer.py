@@ -54,7 +54,8 @@ class PostgreSqlWriter(Writer):
                         value = value.replace("'", '"')
                     values_data.append(value)
                     update_data.append(" {key} = '{value}'".format(
-                        key=key, value=value))
+                        key=key, value=value
+                    ))
                 update = ','.join(update_data)
                 keys = ', '.join(i.keys())
                 values = tuple(values_data)
